@@ -1,0 +1,12 @@
+<span class="h2" mat-dialog-title>How many players will Battle?</span>
+<mat-dialog-content>
+  <mat-icon matSuffix>person</mat-icon>
+  <mat-label>Total Players: </mat-label>
+  <input matInput [(ngModel)]="totalPlayers" />
+  <br />
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div fxLayout="row" fxLayoutGap="1em" fxLayoutAlign="start center">
+    <button mat-stroked-button color="primary" (click)="saveDialog()">Save <mat-icon>save</mat-icon></button>
+  </div>
+</mat-dialog-actions>
