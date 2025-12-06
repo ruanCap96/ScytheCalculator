@@ -15,7 +15,6 @@ import { environment } from '../environments/environment';
 // Toast
 import { ToastrModule } from 'ngx-toastr';
 
-
 // App modules and components
 import { AppComponent } from './app.component';
 import { ShellModule } from './player-faction/shell/shell.module';
@@ -25,20 +24,18 @@ import { StructureBonussesModule } from './structure-bonusses/structure-bonusses
 
 // Database
 import { ScytheData } from './shared/database/scythe.data';
+import { GameplayConfigDialogModule } from './gameplay-config/gameplay-config-dialog.module';
 
 export let AppInjector: Injector;
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     // Angular
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(ScytheData),
-
     FlexLayoutModule,
 
     // NgRX
@@ -53,12 +50,12 @@ export let AppInjector: Injector;
     ToolbarModule,
     PlayerFactionModule,
     ShellModule,
-    StructureBonussesModule
+    StructureBonussesModule,
+    GameplayConfigDialogModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-
 export class AppModule {
   constructor(private injector: Injector) {
     AppInjector = this.injector;

@@ -1,4 +1,9 @@
 <toolbar></toolbar>
-<player-faction-shell fxFlexFill [playerFactions]="playerFactions$ | async"
-    [winningPlayerFaction]="winningPlayerFaction$ | async"
-    [error]="error$ | async"></player-faction-shell>
+
+<player-faction-shell
+  fxFlexFill
+  [playerFactions]="playerFactions$ | async"
+  [winningPlayerFaction]="winningPlayerFaction$ | async"
+  [canShowWinningFaction]="canShowWinningFaction$ | async"
+  [error]="error$ | async"
+></player-faction-shell>
