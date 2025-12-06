@@ -1,21 +1,23 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeletePlayerDialogComponent } from '../delete-player-dialog/delete-player-dialog.component';
 import { PlayerFactionType } from '../enums/player-faction-type.enum';
 import { PlayerFaction } from '../interfaces/player-faction.interface';
 import { PlayerFactionDialogComponent } from '../player-faction-dialog/player-faction-dialog.component';
 import { PlayerFactionModel } from '../models/player-faction.model';
+import { Store } from '@ngrx/store';
+import { PlayerFactionState } from '../state/player-faction.reducer';
 
 @Component({
   selector: 'faction-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CardComponent implements OnInit {
-
+export class CardComponent {
   @Input() playerFaction: PlayerFactionModel;
   @Input() winningPlayerFaction: PlayerFactionModel | null;
+  @Input() canShowWinningFaction: boolean;
 
   model: PlayerFactionModel;
 
@@ -27,23 +29,18 @@ export class CardComponent implements OnInit {
   readonly albionFaction = PlayerFactionType.Albion;
   readonly togawaFaction = PlayerFactionType.Togawa;
 
-  constructor(public dialog: MatDialog) { }
-
-  ngOnInit(): void {
-
-  }
+  constructor(public dialog: MatDialog, private readonly store: Store<PlayerFactionState>) {}
 
   editClicked(playerFaction: PlayerFaction): void {
     this.dialog.open(PlayerFactionDialogComponent, {
       width: '490px',
-      data: playerFaction
+      data: playerFaction,
     });
   }
 
   deleteClicked(playerFaction: PlayerFaction): void {
     this.dialog.open(DeletePlayerDialogComponent, {
-      data: playerFaction.id
+      data: playerFaction.id,
     });
   }
-
 }
