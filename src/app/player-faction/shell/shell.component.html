@@ -1,13 +1,16 @@
 <div fxFlexFill class="top-div">
-    <error-display *ngIf="error" [error]="error"></error-display>
-    <div fxFlexFill fxLayoutGap="10px grid" class="inner-div">
-      <div>
-        <new-player-faction-card></new-player-faction-card>
-        <structure-bonus-card></structure-bonus-card>
-      </div>
-      <faction-card *ngFor="let playerFaction of this.playerFactions"
-        [playerFaction]="playerFaction"
-        [winningPlayerFaction]="winningPlayerFaction">
-      </faction-card>
+  <error-display *ngIf="error" [error]="error"></error-display>
+  <div fxFlexFill fxLayoutGap="10px grid" class="inner-div">
+    <div>
+      <new-player-faction-card></new-player-faction-card>
+      <structure-bonus-card></structure-bonus-card>
     </div>
+    <faction-card
+      *ngFor="let playerFaction of this.playerFactions"
+      [playerFaction]="playerFaction"
+      [winningPlayerFaction]="winningPlayerFaction"
+      [canShowWinningFaction]="canShowWinningFaction"
+    >
+    </faction-card>
+  </div>
 </div>
